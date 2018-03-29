@@ -1,0 +1,20 @@
+{
+  "name": "districx",
+  "version": "1.0.0",
+  "description": "Distributed node js demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UannaFF/DistritX.git"
+  },
+  "author": "AnnaGomez/YijingKang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UannaFF/DistritX/issues"
+  },
+  "homepage": "https://github.com/UannaFF/DistritX#readme"
+}
