@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/UannaFF/DistritX/issues"
   },
-  "homepage": "https://github.com/UannaFF/DistritX#readme"
+  "homepage": "https://github.com/UannaFF/DistritX#readme",
+  "dependencies": {
+    "mongodb": "^3.0.5"
+  }
 }
