@@ -13,7 +13,7 @@ app.set('view engine', 'ejs');
 var MongoClient = require('mongodb').MongoClient
     , format = require('util').format;
 //MongoClient.connect('mongodb://localhost:27017/DS', function (err, db) {
-    MongoClient.connect('mongodb://localhost:27018/DS?replicaSet=rs0', function (err, db) {
+    MongoClient.connect('mongodb://192.168.1.83:27017/DS?replicaSet=rs0', function (err, db) {
     if (err) {
         throw err;
     } else {

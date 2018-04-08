@@ -18,8 +18,8 @@ db.bars.insert([
     {
         name:"Bukana",
         addr:"751 Main Ave.",
-        hh_start:17
-        hh_end:0
+        hh_start:17,
+        hh_end:0,
         menu: [{ name:"Miller", reg_price:4, hh_price:3 }]
     }
 ])
