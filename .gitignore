@@ -1,3 +1,6 @@
+# because emacs...
+*~
+
 # Created by https://www.gitignore.io/api/node
 
 ### Node ###
@@ -61,5 +64,6 @@ typings/
 .env
 mongodb/
 
+srv/mongodb/rs*/*
 
 # End of https://www.gitignore.io/api/node
