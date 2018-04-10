@@ -3,19 +3,55 @@
 var mongo = require('mongodb');
 var MongoClient = require('mongodb').MongoClient, format = require('util').format;
 var mongodb;
+var rsconf = {
+  _id: "rs0",
+  members: [
+    {
+     _id: 0,
+     host: "localhost:27017"
+    },
+    {
+     _id: 1,
+     host: "localhost:27018"
+    },
+    {
+     _id: 2,
+     host: "localhost:27019"
+    }
+   ]
+}
+
+/*MongoClient.connect('mongodb://localhost:27018/DS', function (err, db) {
+}*/
 
 //Connection to the database
-MongoClient.connect('mongodb://localhost:27018/DS', function (err, db) {
-
-	//MongoClient.connect('mongodb://192.168.1.83:27017/DS?replicaSet=rs0', function (err, db) {
+//MongoClient.connect('mongodb://localhost:27018/DS', function (err, db) {
+MongoClient.connect('mongodb://localhost:27017/DS?replicaSet=rs0', function (err, db) {
 	    if (err) {
-	        throw err;
+	    	console.log('before error');
+	    	configureReplicaSet(db);
+	        //throw err;
+
 	    } else {
 	        console.log("successfully connected to the database");
 	    }
 	    mongodb = db;
-	    //db.close();
-	});
+});
+
+
+//Connection to the database
+//MongoClient.connect('mongodb://localhost:27018/DS', function (err, db) {
+MongoClient.connect('mongodb://localhost:27017/DS?replicaSet=rs0', function (err, db) {
+	    if (err) {
+	    	console.log('before error');
+	    	configureReplicaSet(db);
+	        //throw err;
+
+	    } else {
+	        console.log("successfully connected to the database");
+	    }
+	    mongodb = db;
+});
 
 module.exports = {
 
@@ -55,7 +91,8 @@ module.exports = {
 	},
 
 	cleanup : function() {
-		mongodb.close();
+		if(mongodb) 
+			mongodb.close();
 	}
 
 };
