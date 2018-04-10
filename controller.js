@@ -26,7 +26,7 @@ var rsconf = {
 
 //Connection to the database
 //MongoClient.connect('mongodb://localhost:27018/DS', function (err, db) {
-MongoClient.connect('mongodb://localhost:27017/DS?replicaSet=rs0', function (err, db) {
+/*MongoClient.connect('mongodb://localhost:27017/DS?replicaSet=rs0', function (err, db) {
 	    if (err) {
 	    	console.log('before error');
 	    	configureReplicaSet(db);
@@ -36,12 +36,12 @@ MongoClient.connect('mongodb://localhost:27017/DS?replicaSet=rs0', function (err
 	        console.log("successfully connected to the database");
 	    }
 	    mongodb = db;
-});
+});*/
 
 
 //Connection to the database
 //MongoClient.connect('mongodb://localhost:27018/DS', function (err, db) {
-MongoClient.connect('mongodb://localhost:27017/DS?replicaSet=rs0', function (err, db) {
+MongoClient.connect('mongodb://localhost:27017/beerhunterDS?replicaSet=beerhunterreplica', function (err, db) {
 	    if (err) {
 	    	console.log('before error');
 	    	configureReplicaSet(db);
@@ -56,7 +56,7 @@ MongoClient.connect('mongodb://localhost:27017/DS?replicaSet=rs0', function (err
 module.exports = {
 
 	getAllBars : function(callback) {
-		mongodb.db('DS').collection('bars', function(err, collection) {
+		mongodb.db('beerhunterDS').collection('bars', function(err, collection) {
 	        if (!err) {
 	          collection.find().toArray(callback); //end collection.find 
 	        } else {
@@ -67,7 +67,7 @@ module.exports = {
 	},
 
 	getAllBeers : function(callback) {
-		mongodb.db('DS').collection('beers', function(err, collection) {
+		mongodb.db('beerhunterDS').collection('beers', function(err, collection) {
 	        if (!err) {
 	          collection.find().toArray(callback); //end collection.find 
 	        } else {
@@ -78,7 +78,7 @@ module.exports = {
 	},
 
 	findBeer : function(query, callback) {
-		mongodb.db('DS').collection('beers', function(err, collection) {
+		mongodb.db('beerhunterDS').collection('beers', function(err, collection) {
 	        if (!err) {
 	          collection.find({
 	            'name': query
