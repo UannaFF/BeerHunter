@@ -79,8 +79,8 @@ app.use("*",function(req,res){
 });
 
 app.listen(3000, function () {
-  console.log('Beerhunter 3000!')
-})
+  console.log('Beerhunter europe 3000!')
+});
 
 process.stdin.resume();//so the program will not close instantly
  

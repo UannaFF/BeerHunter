@@ -5,10 +5,10 @@
 
 // data inspired by https://im2ag-moodle.e.ujf-grenoble.fr/pluginfile.php/32299/mod_resource/content/2/IntroDataModels.pdf
 
-db.dropDatabase();
+
 
 conf = {
-    _id : "beerhunterrreplica",
+    _id : "beerhunterreplica",
     members: [
         { _id: beerhunterreplica-0, host: "localhost:27017" },
         { _id: beerhunterreplica-1, host: "localhost:27018" },

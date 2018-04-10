@@ -8,6 +8,12 @@ Configuration of the replicaset:
 	LINUX: from the top BeerHunter directory, run ./replicaset_configuration/linux/confscript.bash
 	OSX: from the top BeerHunter directory, run ./replicaset_configuration/osx/confscript.bash
 
+	After:
+
+	run mongo localhost/beerhunterDS:27017 ./db-script.js
+
+	in a new terminal to configure the replicaset and add elements to the database
+
 	After doing that, there'll be three terminals, each of them will be running an instance of the replica set.
 
 	The default ports are 27017, 27018, 27019.
