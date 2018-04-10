@@ -5,6 +5,8 @@
 
 // data inspired by https://im2ag-moodle.e.ujf-grenoble.fr/pluginfile.php/32299/mod_resource/content/2/IntroDataModels.pdf
 
+db.dropDatabase();
+
 db.bars.insert([
     {
         name:"Sarah's",
