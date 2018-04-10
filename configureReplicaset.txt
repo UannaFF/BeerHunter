@@ -1,7 +1,7 @@
 mongo --port portnumber
 
 rsconf = {
-  _id: "rs0",
+  _id: "beerhunterreplica",
   members: [
     {
      _id: 0,
