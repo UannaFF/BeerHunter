@@ -59,22 +59,50 @@ db.bars.insert([
 db.beers.insert([
     {
         name:"Bud Light",
-        calories:110, // 16oz
+        calories:110,
+        type:"lager",
+        fabrication:"united states",
+        countries:["united states", "france", "vietnam"],
+        image:"budlight.jpeg"
     },
     {
         name:"Cheapo",
-        calories:170,
+        calories:150,
+        type:"IPA",
+        fabrication:"canada",
+        countries:["united states", "france", "mexico", "china", "canada"],
+        image:"cheapo.jpeg"
     },
     {
         name:"Miller High Life",
-        calories:190,
+        calories:140,
+        type:"lager",
+        fabrication:"united states",
+        countries:["united states", "france", "canada", "belgium", "south africa"],
+        image:"miller.jpg"
     },
     {
         name:"Coors Light",
         calories:136
+        type:"lager",
+        fabrication:"united states",
+        countries:["united states", "peru", "france", "canada", "south korea"],
+        image:"coors.png"
     },
     {
-        name:"Micheob Ultra",
+        name:"Michelob Ultra",
         calories:120
+        type:"lager",
+        fabrication:"united states",
+        countries:["united states", "brazil", "france", ],
+        image:"michelob.jpeg"
+    },
+    {
+        name:"Vigneronne",
+        calories:150,
+        type:"lambic",
+        fabrication:"belgium",
+        countries:["belgium"],
+        image:"vigneronne.jpg"
     }
 ]);
