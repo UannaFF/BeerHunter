@@ -22,7 +22,7 @@ db.bars.insert([
         name:"Sarah's",
         addr:"400 Maple St.",
         menu: [{ name:"Bud Light", price:3 },
-               { name:"Cheapo", price:2.5 }]
+               { name:"Cheapo", price:2.5 }],
     },
     {
         name:"Irish Pub",

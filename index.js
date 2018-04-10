@@ -46,7 +46,7 @@ router.post('/search', function(req, res, next) {
 
 router.get('/beers', function(req, res, next) {
     console.log("Beers directioning");
-    controller.getAllBeers(function(err, docs) {
+    controller.findBeerBy({},function(err, docs) {
         if (!err) {
             console.log("docs results: "+docs);
             var intCount = docs.length;
