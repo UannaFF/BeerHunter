@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
 var router = express.Router();
+var controller = require('./controller.js');
 //var dbs = require('./javascripts/db');
 
 
@@ -16,21 +17,6 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 //app.use(express.bodyParser());
 
 var path = __dirname + '/views/'; //path to views
-var mongodb;
-
-var MongoClient = require('mongodb').MongoClient, format = require('util').format;
-//MongoClient.connect('mongodb://localhost:27017/DS', function (err, db) {
-
-MongoClient.connect('mongodb://192.168.1.83:27017/DS?replicaSet=rs0', function (err, db) {
-    if (err) {
-        throw err;
-    } else {
-        console.log("successfully connected to the database");
-    }
-    mongodb = db;
-    //db.close();
-});
-
 
 //Router function, every request is gonna pass through here
 router.use(function (req,res,next) {
@@ -49,7 +35,7 @@ router.get("/index",function(req,res){
 });
 
 
-router.post('/search/', function(req, res, next) {
+router.post('/search', function(req, res, next) {
 
     var keyword = req.body.search;
     console.log("keyword of search: "+keyword);
@@ -58,9 +44,32 @@ router.post('/search/', function(req, res, next) {
 
 });
 
+router.get('/beers', function(req, res, next) {
+    console.log("Beers directioning");
+    controller.getAllBeers(function(err, docs) {
+        if (!err) {
+            console.log("docs results: "+docs);
+            var intCount = docs.length;
+            res.render('category-full', {searchKeyword: "Beers", results : docs});
+        } else {
+            console.log("docs with no results");
+            res.render('404');
+        }
+    });
+});
+
 router.get("/category-full",function(req,res){
   var keyword = req.query.keyword; //get search field
-  res.render('category-full', {searchKeyword: keyword});
+  controller.findBeer(keyword, function(err, docs) {
+        if (!err) {
+            console.log("docs results: "+docs);
+            var intCount = docs.length;
+            res.render('category-full', {searchKeyword: keyword, results : docs});
+        } else {
+            console.log("docs with no results");
+            res.render('404');
+        }
+    });
 });
 
 app.use("/",router);
@@ -69,8 +78,8 @@ app.use("*",function(req,res){
   res.render('404');
 });
 
-app.listen(8080, function () {
-  console.log('DistrictX 8080!')
+app.listen(3000, function () {
+  console.log('DistrictX 3000!')
 })
 
 process.stdin.resume();//so the program will not close instantly
@@ -78,7 +87,7 @@ process.stdin.resume();//so the program will not close instantly
  //Exit handler to cleanup database before exiting
 function exitHandler(options, err) {
     console.log('About to exit with code');
-    mongodb.close();
+    controller.cleanup();
     if (options.cleanup) console.log('clean');
     if (err) console.log(err.stack);
     if (options.exit) process.exit();

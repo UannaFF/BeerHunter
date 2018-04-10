@@ -22,4 +22,19 @@ db.bars.insert([
         hh_end:0,
         menu: [{ name:"Miller", reg_price:4, hh_price:3 }]
     }
-])
+]);
+
+db.beers.insert([
+    {
+        name:"Bud",
+        price: 3,
+    },
+    {
+        name:"Cheapo",
+        price: 2.5,
+    },
+    {
+        name:"Miller",
+        price: 2,
+    }
+]);
