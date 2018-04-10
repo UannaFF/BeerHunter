@@ -26,4 +26,4 @@ xterm -hold -e "mongod --replSet beerhunterreplica --port 27018 --bind_ip localh
 echo "Setting up third replica set node in port 27019:" &
 xterm -hold -e "mongod --replSet beerhunterreplica --port 27019 --bind_ip localhost --dbpath ./beerhunterreplica/mongodb/beerhunterreplica-2 --smallfiles --oplogSize 128"&
 
-#xterm -hold -e "mongo --host localhost/beerhunterDS:27017 $HOME/Documents/Distributed/BeerHunter/db-script.js"
+xterm -hold -e "mongo --host localhost/beerhunterDS:27017 ./db-script.js"

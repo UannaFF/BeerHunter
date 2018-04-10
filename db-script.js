@@ -7,6 +7,16 @@
 
 db.dropDatabase();
 
+conf = {
+    _id : "beerhunterrreplica",
+    members: [
+        { _id: beerhunterreplica-0, host: "localhost:27017" },
+        { _id: beerhunterreplica-1, host: "localhost:27018" },
+        { _id: beerhunterreplica-2, host: "localhost:27019" }
+    ]
+};
+rs.initiate(conf);
+
 db.bars.insert([
     {
         name:"Sarah's",
