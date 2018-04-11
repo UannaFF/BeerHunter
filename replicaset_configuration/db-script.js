@@ -10,19 +10,21 @@
 conf = {
     _id : "beerhunterreplica",
     members: [
-        { _id: beerhunterreplica-0, host: "localhost:27017" },
-        { _id: beerhunterreplica-1, host: "localhost:27018" },
-        { _id: beerhunterreplica-2, host: "localhost:27019" }
+        { _id: 0, host: "localhost:27017" },
+        { _id: 1, host: "localhost:27018" },
+        { _id: 2, host: "localhost:27019" }
     ]
 };
 rs.initiate(conf);
+
+db.dropDatabase();
 
 db.bars.insert([
     {
         name:"Sarah's",
         addr:"400 Maple St.",
         menu: [{ name:"Bud Light", price:3 },
-               { name:"Cheapo", price:2.5 }],
+               { name:"Cheapo", price:2.5 }]
     },
     {
         name:"Irish Pub",
@@ -59,50 +61,27 @@ db.bars.insert([
 db.beers.insert([
     {
         name:"Bud Light",
-        calories:110,
-        type:"lager",
-        fabrication:"united states",
-        countries:["united states", "france", "vietnam"],
-        image:"budlight.jpeg"
+        calories:110, // 16oz
+        image:"img/noimage.png",
     },
     {
         name:"Cheapo",
-        calories:150,
-        type:"IPA",
-        fabrication:"canada",
-        countries:["united states", "france", "mexico", "china", "canada"],
-        image:"cheapo.jpeg"
+        calories:170,
+        image:"img/noimage.png",
     },
     {
         name:"Miller High Life",
-        calories:140,
-        type:"lager",
-        fabrication:"united states",
-        countries:["united states", "france", "canada", "belgium", "south africa"],
-        image:"miller.jpg"
+        calories:190,
+        image:"img/millerhighlife.png",
     },
     {
         name:"Coors Light",
-        calories:136
-        type:"lager",
-        fabrication:"united states",
-        countries:["united states", "peru", "france", "canada", "south korea"],
-        image:"coors.png"
+        calories:136,
+        image:"img/noimage.png",
     },
     {
-        name:"Michelob Ultra",
-        calories:120
-        type:"lager",
-        fabrication:"united states",
-        countries:["united states", "brazil", "france", ],
-        image:"michelob.jpeg"
-    },
-    {
-        name:"Vigneronne",
-        calories:150,
-        type:"lambic",
-        fabrication:"belgium",
-        countries:["belgium"],
-        image:"vigneronne.jpg"
+        name:"Micheob Ultra",
+        calories:120,
+        image:"img/noimage.png",
     }
 ]);

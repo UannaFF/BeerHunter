@@ -34,6 +34,16 @@ router.get("/index",function(req,res){
   res.render('index');
 });
 
+router.get("/contact",function(req,res){
+  //res.sendFile(path + "index.ejs");
+  
+  res.render('contact');
+});
+
+router.post("/contact", function(req, res) {
+  console.log('The name: '+req.name);
+  res.render("detail");
+});
 
 router.post('/search', function(req, res, next) {
 
@@ -50,6 +60,7 @@ router.get('/beers', function(req, res, next) {
         if (!err) {
             console.log("docs results: "+docs);
             var intCount = docs.length;
+            if(intCount > 0) console.log("IMAGE 0: "+docs[0].image);
             res.render('category-full', {searchKeyword: "Beers", results : docs});
         } else {
             console.log("docs with no results");
