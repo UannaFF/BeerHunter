@@ -1,24 +1,38 @@
-BeerHunter project
+## BeerHunter project
 
+Web server created with nodejs connected to a mongodb replicaset.
 
-	Web server created with nodejs connected to a mongodb replicaset.
+# Configuration of the replicaset:
 
-Configuration of the replicaset:
+LINUX: from the top BeerHunter directory, run
 
-	LINUX: from the top BeerHunter directory, run ./replicaset_configuration/linux/confscript.bash
-	OSX: from the top BeerHunter directory, run ./replicaset_configuration/osx/confscript.bash
+       ./replicaset_configuration/linux/confscript.bash
+       
+OSX: from the top BeerHunter directory, run
 
-	After:
+       ./replicaset_configuration/osx/confscript.bash
 
-	run mongo localhost/beerhunterDS:27017 ./db-script.js
+Then run:
 
-	in a new terminal to configure the replicaset and add elements to the database
+	mongo localhost:27017/beerhunterDS ./replicaset_configuration/db-script.js
 
-	After doing that, there'll be three terminals, each of them will be running an instance of the replica set.
+in a new terminal to configure the replicaset and add elements to the database
 
-	The default ports are 27017, 27018, 27019.
+After doing that, there'll be three terminals, each of them will be running an instance of the replica set.
 
-	The folders used to store the replica set databases are in the folders:
-		1. beerhunterreplica/mongodb/beerhunterreplica-0
-		2. beerhunterreplica/mongodb/beerhunterreplica-1
-		3. beerhunterreplica/mongodb/beerhunterreplica-2
+The default ports are 27017, 27018, 27019.
+
+The folders used to store the replica set databases are in the folders:
+	1. beerhunterreplica/mongodb/beerhunterreplica-0
+	2. beerhunterreplica/mongodb/beerhunterreplica-1
+	3. beerhunterreplica/mongodb/beerhunterreplica-2
+
+# Running the web server:
+
+Again, from the top BeerHunter directory, run
+
+       node index.js
+
+Open a web browser and point it to
+
+     localhost:3000
