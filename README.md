@@ -12,11 +12,6 @@ OSX: from the top BeerHunter directory, run
 
 	./replicaset_configuration/osx/confscript.bash
 
-Then run:
-
-	mongo localhost:27017/beerhunterDS ./replicaset_configuration/db-script.js
-
-in a new terminal to configure the replicaset and add elements to the database
 
 After doing that, there'll be three terminals, each of them will be running an instance of the replica set.
 
@@ -27,6 +22,12 @@ The folders used to store the replica set databases are in the folders:
 1. beerhunterreplica/mongodb/beerhunterreplica-0
 2. beerhunterreplica/mongodb/beerhunterreplica-1
 3. beerhunterreplica/mongodb/beerhunterreplica-2
+
+Then run:
+
+	mongo localhost:27017/beerhunterDS ./replicaset_configuration/db-script.js
+
+in a new terminal to configure the replicaset and add elements to the database
 
 ## Running the web server:
 
