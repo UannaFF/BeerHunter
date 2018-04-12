@@ -5,8 +5,6 @@
 
 // data inspired by https://im2ag-moodle.e.ujf-grenoble.fr/pluginfile.php/32299/mod_resource/content/2/IntroDataModels.pdf
 
-
-
 conf = {
     _id : "beerhunterreplica",
     members: [
@@ -18,6 +16,44 @@ conf = {
 rs.initiate(conf);
 
 db.dropDatabase();
+
+db.beers.insert([
+    {
+        name:"Bud Light",
+        calories:110, // 16oz
+        image:"img/noimage.png",
+        origincountry:"usa",
+        type:"lager",
+    },
+    {
+        name:"Cheapo",
+        calories:170,
+        image:"img/noimage.png",
+        origincountry:"usa",
+        type:"indian pale ale"
+    },
+    {
+        name:"Miller High Life",
+        calories:190,
+        image:"img/millerhighlife.png",
+        origincountry:"usa",
+        type:"lager",
+    },
+    {
+        name:"Coors Light",
+        calories:136,
+        image:"img/noimage.png",
+        origincountry:"usa",
+        type:"lager",
+    },
+    {
+        name:"Micheob Ultra",
+        calories:120,
+        image:"img/noimage.png",
+        origincountry:"usa",
+        type:"lager",
+    }
+]);
 
 db.bars.insert([
     {
@@ -60,43 +96,5 @@ db.bars.insert([
         menu: [{ name:"Bud Light", reg_price:3.5, hh_price:3 },
                { name:"Michelob Ultra", reg_price:5, hh_price:3 },
                { name:"Cheapo", price:3 }]
-    }
-]);
-
-db.beers.insert([
-    {
-        name:"Bud Light",
-        calories:110, // 16oz
-        image:"img/noimage.png",
-        origincountry:"usa",
-        type:"lager",
-    },
-    {
-        name:"Cheapo",
-        calories:170,
-        image:"img/noimage.png",
-        origincountry:"usa",
-        type:"indian pale ale"
-    },
-    {
-        name:"Miller High Life",
-        calories:190,
-        image:"img/millerhighlife.png",
-        origincountry:"usa",
-        type:"lager",
-    },
-    {
-        name:"Coors Light",
-        calories:136,
-        image:"img/noimage.png",
-        origincountry:"usa",
-        type:"lager",
-    },
-    {
-        name:"Micheob Ultra",
-        calories:120,
-        image:"img/noimage.png",
-        origincountry:"usa",
-        type:"lager",
     }
 ]);
