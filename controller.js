@@ -63,6 +63,12 @@ module.exports = {
 	    }); //end db.collection
 	},
 
+	insertBeer : function(beerparams, callback) {
+		mongodb.db('beerhunterDS').collection("beers", function(err, col) {
+            col.insert(beerparams, callback);
+         });
+	},
+
 	cleanup : function() {
 		if(mongodb) 
 			mongodb.close();

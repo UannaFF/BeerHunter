@@ -3,6 +3,13 @@ BeerHunter project
 
 	Web server created with nodejs connected to a mongodb replicaset.
 
+Dependencies:
+	
+	nodejs
+	express
+	mongodb
+	mongodb driver for nodejs
+
 Configuration of the replicaset:
 
 	LINUX: from the top BeerHunter directory, run ./replicaset_configuration/linux/confscript.bash
@@ -10,8 +17,7 @@ Configuration of the replicaset:
 
 	After:
 
-	run mongo localhost/beerhunterDS:27017 ./db-script.js
-
+	run mongo localhost:27019/beerhunterDS ./replicaset_configuration/db-script.js
 	in a new terminal to configure the replicaset and add elements to the database
 
 	After doing that, there'll be three terminals, each of them will be running an instance of the replica set.
@@ -22,3 +28,7 @@ Configuration of the replicaset:
 		1. beerhunterreplica/mongodb/beerhunterreplica-0
 		2. beerhunterreplica/mongodb/beerhunterreplica-1
 		3. beerhunterreplica/mongodb/beerhunterreplica-2
+
+To run the nodejs server:
+
+	node index.js in a terminal.
