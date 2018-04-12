@@ -2,43 +2,49 @@
 
 Web server created with nodejs connected to a mongodb replicaset.
 
-## Configuration of the replicaset:
+## Dependencies
 
-Dependencies:
-	
-	nodejs
-	express
-	mongodb
-	mongodb driver for nodejs
+- Linux
+- MongoDB (Community Edition is fine)
+- Node.js
 
-Configuration of the replicaset:
+## Commands for MongoDB Replica Set
 
-LINUX: from the top BeerHunter directory, run
+### Initial configuration of the replicaset:
+
+From the top BeerHunter directory, run
 
 	./replicaset_configuration/linux/confscript.bash
-       
-OSX: from the top BeerHunter directory, run
 
-	./replicaset_configuration/osx/confscript.bash
+After doing that, there'll be three terminals, each of them will be running a mongod instance of the replica set. Verify that the following line appears in the output:
 
-	run mongo localhost:27019/beerhunterDS ./replicaset_configuration/db-script.js
-	in a new terminal to configure the replicaset and add elements to the database
-
-After doing that, there'll be three terminals, each of them will be running an instance of the replica set.
+	[initandlisten] waiting for connections on port <portnumber>
 
 The default ports are 27017, 27018, 27019.
 
-The folders used to store the replica set databases are in the folders:
+Then, in a new terminal, run:
 
-1. beerhunterreplica/mongodb/beerhunterreplica-0
-2. beerhunterreplica/mongodb/beerhunterreplica-1
-3. beerhunterreplica/mongodb/beerhunterreplica-2
+	mongo localhost:27017/beerhunterDS ./replicaset_configuration/db-conf.js
 
-Then run:
+to configure the replicaset. Wait for the three mongod instances to connect to each other and establish themselves as PRIMARY or SECONDARY.
 
-	mongo localhost:27017/beerhunterDS ./replicaset_configuration/db-script.js
+If you'd like to pre-populate the database with some data, wait for the primary to be established and run:
 
-in a new terminal to configure the replicaset and add elements to the database
+	mongo localhost:27017/beerhunterDS ./replicaset_configuration/db-data.js
+
+### Starting the replicaset after it has been configured:
+
+After the replicaset has been configured and populated, simply run 
+
+	./replicaset_configuration/linux/confscript.bash
+	
+This time, you should see output indicating that the three terminals have connected to each other.
+
+### Resetting the replicaset:
+
+From the top BeerHunter directory, run
+
+	./replicaset_configuration/erase-replicaset.bash
 
 ## Running the web server:
 
@@ -46,7 +52,22 @@ Again, from the top BeerHunter directory, run
 
 	node index.js
 
+If you see
+
+	MongoError: no primary found in replicaset or invalid replica set name
+	
+try once again after waiting a few seconds. 
+If the server successfully started, you should see
+
+	successully connected to the instance 27017 of the beerhunterreplica set 
+
 Open a web browser and point it to
 
 	localhost:3000
->>>>>>> 68c2a6aa1df183bfac1d460ef17901178b7601c0
+
+## Other information
+The folders used to store the replica set databases are in the folders:
+
+1. beerhunterreplica/mongodb/beerhunterreplica-0
+2. beerhunterreplica/mongodb/beerhunterreplica-1
+3. beerhunterreplica/mongodb/beerhunterreplica-2
