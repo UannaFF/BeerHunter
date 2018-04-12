@@ -17,8 +17,6 @@ do
 done
 cd ../..
 
-echo "Erasing previous replica set settings:" &
-xterm -hold -e "./replicaset_configuration/erase-replicaset.bash" &
 echo "Setting up first replica set node in port 27017:" &
 xterm -hold -e "mongod --replSet beerhunterreplica --port 27017 --bind_ip localhost --dbpath ./beerhunterreplica/mongodb/beerhunterreplica-0 --smallfiles --oplogSize 128" &
 echo "Setting up second replica set node in port 27018:" &

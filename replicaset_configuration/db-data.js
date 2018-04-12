@@ -1,22 +1,4 @@
-// https://docs.mongodb.com/manual/tutorial/write-scripts-for-the-mongo-shell/
-
-// README: to load this data:
-// $ mongo localhost:27017/<dbname> db-script.js
-
 // data inspired by https://im2ag-moodle.e.ujf-grenoble.fr/pluginfile.php/32299/mod_resource/content/2/IntroDataModels.pdf
-
-conf = {
-    _id : "beerhunterreplica",
-    members: [
-        { _id: 0, host: "localhost:27017" },
-        { _id: 1, host: "localhost:27018" },
-        { _id: 2, host: "localhost:27019" }
-    ]
-};
-rs.initiate(conf);
-
-db.dropDatabase();
-
 db.beers.insert([
     {
         name:"Bud Light",
