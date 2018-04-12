@@ -173,5 +173,5 @@ process.on('SIGUSR2', exitHandler.bind(null, {exit:true}));
 process.on('uncaughtException', exitHandler.bind(null, {exit:true}));
 
 // Poner un mensaje en la consola
-console.log("Beer hunter server started in http://localhost:8080/");
+console.log("Beer hunter server started in http://localhost:3000/");
 
